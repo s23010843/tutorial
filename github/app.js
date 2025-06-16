@@ -1,5 +1,4 @@
-
-// Enhanced Git Tutorial Pro Application
+// Git Tutorial Application
 class GitTutorialApp {
     constructor() {
         this.currentPage = 'home';
@@ -8,20 +7,24 @@ class GitTutorialApp {
         this.terminalHistory = [];
         this.currentPath = '~/my-project';
         this.theme = localStorage.getItem('theme') || 'light';
-        
+
         this.init();
     }
 
     init() {
         this.setupData();
         this.setupRouter();
-        this.setupTheme();
+        this.setupThemeToggle();
         this.setupPWA();
         this.setupEventListeners();
         this.populateContent();
         this.checkOnlineStatus();
         this.updateCurrentYear();
         this.hideLoading();
+        this.setupSmoothScrolling();
+        this.setupAnimations();
+        this.setupOfflineSupport();
+        this.setupProgressTracking();
     }
 
     setupData() {
@@ -227,24 +230,24 @@ class GitTutorialApp {
     handleRoute() {
         const hash = window.location.hash.slice(1) || '/';
         const page = hash.substring(1) || 'home';
-        
+
         // Hide all pages
         document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
-        
+
         // Show current page
         const currentPageEl = document.getElementById(`page-${page}`);
         if (currentPageEl) {
             currentPageEl.classList.add('active');
             this.currentPage = page;
-            
+
             // Update navigation
             document.querySelectorAll('.nav-link').forEach(link => {
                 link.classList.toggle('active', link.getAttribute('data-route') === page);
             });
-            
+
             // Update page title
             this.updatePageTitle(page);
-            
+
             // Populate page content if needed
             this.populatePageContent(page);
         }
@@ -259,62 +262,92 @@ class GitTutorialApp {
             practice: 'Interactive Git Practice - Terminal Simulator',
             advanced: 'Advanced Git Topics - Professional Guide'
         };
-        
+
         document.title = titles[page] || titles.home;
     }
 
-    setupTheme() {
-        document.documentElement.setAttribute('data-theme', this.theme);
+    setupThemeToggle() {
         const themeToggle = document.getElementById('themeToggle');
-        const themeIcon = themeToggle.querySelector('.theme-icon');
-        
-        themeIcon.textContent = this.theme === 'dark' ? '☀️' : '🌙';
-        
-        themeToggle.addEventListener('click', () => {
-            this.theme = this.theme === 'light' ? 'dark' : 'light';
-            document.documentElement.setAttribute('data-theme', this.theme);
-            localStorage.setItem('theme', this.theme);
-            themeIcon.textContent = this.theme === 'dark' ? '☀️' : '🌙';
-        });
-    }
+        const prefersDark = window.matchMedia('(prefers-color-scheme: dark)');
 
-    setupPWA() {
-        if ('serviceWorker' in navigator) {
-            window.addEventListener('load', () => {
-                navigator.serviceWorker.register('sw.js')
-                    .then(registration => console.log('SW registered'))
-                    .catch(error => console.log('SW registration failed'));
+        const savedTheme = localStorage.getItem('theme') || 
+                          (prefersDark.matches ? 'dark' : 'light');
+        this.setTheme(savedTheme);
+
+        if (themeToggle) {
+            themeToggle.addEventListener('click', () => {
+                const currentTheme = document.documentElement.getAttribute('data-theme');
+                const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+                this.setTheme(newTheme);
             });
         }
 
+        prefersDark.addEventListener('change', (e) => {
+            if (!localStorage.getItem('theme')) {
+                this.setTheme(e.matches ? 'dark' : 'light');
+            }
+        });
+    }
+
+    setTheme(theme) {
+        document.documentElement.setAttribute('data-theme', theme);
+        localStorage.setItem('theme', theme);
+
+        const themeToggle = document.getElementById('themeToggle');
+        if (themeToggle) {
+            themeToggle.textContent = theme === 'dark' ? '☀️' : '🌙';
+        }
+    }
+
+    setupPWA() {
         let deferredPrompt;
         const installBtn = document.getElementById('installBtn');
 
         window.addEventListener('beforeinstallprompt', (e) => {
             e.preventDefault();
             deferredPrompt = e;
-            installBtn.style.display = 'block';
-        });
 
-        installBtn.addEventListener('click', () => {
-            if (deferredPrompt) {
-                deferredPrompt.prompt();
-                deferredPrompt.userChoice.then((choiceResult) => {
-                    deferredPrompt = null;
+            if (installBtn) {
+                installBtn.style.display = 'block';
+                installBtn.addEventListener('click', () => {
+                    installBtn.style.display = 'none';
+                    deferredPrompt.prompt();
+                    deferredPrompt.userChoice.then((choiceResult) => {
+                        deferredPrompt = null;
+                    });
                 });
             }
         });
     }
 
     setupEventListeners() {
-        // Mobile menu toggle
-        const hamburger = document.getElementById('hamburger');
-        const navMenu = document.getElementById('navMenu');
-        
-        hamburger.addEventListener('click', () => {
-            navMenu.classList.toggle('active');
-            hamburger.classList.toggle('active');
+        const hamburger = document.querySelector('.hamburger');
+        const navMenu = document.querySelector('.nav-menu');
+
+        if (hamburger && navMenu) {
+            hamburger.addEventListener('click', () => {
+                hamburger.classList.toggle('active');
+                navMenu.classList.toggle('active');
+                document.body.classList.toggle('menu-open');
+            });
+        }
+
+        document.querySelectorAll('.nav-link').forEach(link => {
+            link.addEventListener('click', () => {
+                hamburger?.classList.remove('active');
+                navMenu?.classList.remove('active');
+                document.body.classList.remove('menu-open');
+            });
         });
+
+         // Search functionality
+         const searchInput = document.getElementById('commandSearch');
+         if (searchInput) {
+             searchInput.addEventListener('input', (e) => {
+                 this.filterCommands(e.target.value);
+             });
+         }
+       
 
         // Terminal simulator
         const terminalInput = document.getElementById('terminalInput');
@@ -333,11 +366,11 @@ class GitTutorialApp {
         // Modal events
         const modal = document.getElementById('lessonModal');
         const modalClose = document.querySelector('.modal-close');
-        
+
         if (modalClose) {
             modalClose.addEventListener('click', () => this.closeModal());
         }
-        
+
         window.addEventListener('click', (e) => {
             if (e.target === modal) {
                 this.closeModal();
@@ -420,7 +453,7 @@ class GitTutorialApp {
 
     executeCommand(command) {
         this.addToTerminal(`$ ${command}`, 'input');
-        
+
         if (command === 'git init') {
             this.addToTerminal('✅ Initialized empty Git repository in ' + this.currentPath + '/.git/', 'success');
         } else if (command === 'git status') {
@@ -451,7 +484,7 @@ class GitTutorialApp {
             this.addToTerminal(`❌ Command not found: ${command}`, 'error');
             this.addToTerminal('Type "help" for available commands', 'hint');
         }
-        
+
         this.addToTerminal('', 'output');
     }
 
@@ -472,7 +505,7 @@ class GitTutorialApp {
         const line = document.createElement('div');
         line.className = `terminal-line terminal-${type}`;
         line.textContent = text;
-        
+
         terminalOutput.appendChild(line);
         terminalOutput.scrollTop = terminalOutput.scrollHeight;
     }
@@ -480,11 +513,11 @@ class GitTutorialApp {
     openLesson(lessonId, category) {
         const lessons = this.lessons.get(category) || [];
         const lesson = lessons.find(l => l.id === lessonId);
-        
+
         if (lesson) {
             const modal = document.getElementById('lessonModal');
             const content = document.getElementById('lessonContent');
-            
+
             content.innerHTML = `
                 <div class="lesson-header">
                     <h1>${lesson.title}</h1>
@@ -495,7 +528,7 @@ class GitTutorialApp {
                 </div>
                 <div class="lesson-body">${lesson.content}</div>
             `;
-            
+
             modal.style.display = 'block';
             document.body.style.overflow = 'hidden';
         }
@@ -509,15 +542,15 @@ class GitTutorialApp {
 
     checkOnlineStatus() {
         const offlineStatus = document.getElementById('offlineStatus');
-        
+
         const updateStatus = () => {
             if (navigator.onLine) {
-                offlineStatus.style.display = 'none';
+                if (offlineStatus) offlineStatus.style.display = 'none';
             } else {
-                offlineStatus.style.display = 'block';
+                if (offlineStatus) offlineStatus.style.display = 'block';
             }
         };
-        
+
         window.addEventListener('online', updateStatus);
         window.addEventListener('offline', updateStatus);
         updateStatus();
@@ -526,10 +559,12 @@ class GitTutorialApp {
     hideLoading() {
         setTimeout(() => {
             const loadingScreen = document.getElementById('loadingScreen');
-            loadingScreen.style.opacity = '0';
-            setTimeout(() => {
-                loadingScreen.style.display = 'none';
-            }, 300);
+            if (loadingScreen) {
+                loadingScreen.style.opacity = '0';
+                setTimeout(() => {
+                    loadingScreen.style.display = 'none';
+                }, 300);
+            }
         }, 1000);
     }
 
@@ -541,12 +576,116 @@ class GitTutorialApp {
         });
     }
 
+    setupSmoothScrolling() {
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    }
+
+    setupAnimations() {
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animate-in');
+                }
+            });
+        }, {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        });
+
+        document.querySelectorAll('.lesson-card, .content-section, .feature-card').forEach(el => {
+            observer.observe(el);
+        });
+    }
+
+    setupOfflineSupport() {
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.register('../sw.js')
+                .then(registration => {
+                    console.log('SW registered:', registration);
+                })
+                .catch(error => {
+                    console.log('SW registration failed:', error);
+                });
+        }
+    }
+
+    setupProgressTracking() {
+        const lessonCards = document.querySelectorAll('.lesson-card');
+
+        lessonCards.forEach((card, index) => {
+            card.addEventListener('click', () => {
+                const lessonId = `git-lesson-${index}`;
+                this.markLessonAsViewed(lessonId);
+                card.classList.add('viewed');
+            });
+        });
+
+        this.loadProgress();
+    }
+
+    markLessonAsViewed(lessonId) {
+        const viewedLessons = JSON.parse(localStorage.getItem('viewedLessons') || '[]');
+        if (!viewedLessons.includes(lessonId)) {
+            viewedLessons.push(lessonId);
+            localStorage.setItem('viewedLessons', JSON.stringify(viewedLessons));
+        }
+    }
+
+    loadProgress() {
+        const viewedLessons = JSON.parse(localStorage.getItem('viewedLessons') || '[]');
+        const lessonCards = document.querySelectorAll('.lesson-card');
+
+        lessonCards.forEach((card, index) => {
+            const lessonId = `git-lesson-${index}`;
+            if (viewedLessons.includes(lessonId)) {
+                card.classList.add('viewed');
+            }
+        });
+    }
+
+    filterLessons(searchTerm) {
+        const lessonCards = document.querySelectorAll('.lesson-card');
+
+        lessonCards.forEach(card => {
+            const title = card.querySelector('h3').textContent.toLowerCase();
+            const description = card.querySelector('p').textContent.toLowerCase();
+            const isMatch = title.includes(searchTerm.toLowerCase()) || 
+                           description.includes(searchTerm.toLowerCase());
+
+            card.style.display = isMatch ? 'block' : 'none';
+        });
+    }
+
+    filterCommands(searchTerm) {
+        const commandCards = document.querySelectorAll('.command-card');
+
+        commandCards.forEach(card => {
+            const commandName = card.querySelector('.command-name').textContent.toLowerCase();
+            const commandDesc = card.querySelector('.command-description').textContent.toLowerCase();
+    
+            const isMatch = commandName.includes(searchTerm.toLowerCase()) || 
+                            commandDesc.includes(searchTerm.toLowerCase());
+            card.style.display = isMatch ? 'block' : 'none';
+        });
+    }
+
     // Content methods
     getWhatIsGitContent() {
         return `
             <h2>Understanding Version Control</h2>
             <p>Git is a distributed version control system that tracks changes in files and coordinates work on those files among multiple people. It's like having a time machine for your code!</p>
-            
+
             <h3>Why Use Git?</h3>
             <ul>
                 <li><strong>Track Changes:</strong> See exactly what changed, when, and who made the change</li>
@@ -555,7 +694,7 @@ class GitTutorialApp {
                 <li><strong>Backup:</strong> Your code history is preserved and distributed</li>
                 <li><strong>Rollback:</strong> Easily revert to previous versions if something breaks</li>
             </ul>
-            
+
             <div class="tip-box">
                 <h4>💡 Pro Tip</h4>
                 <p>Git is not just for code! You can use it to track changes in any text-based files including documentation, configuration files, and even this tutorial!</p>
@@ -566,7 +705,7 @@ class GitTutorialApp {
     getInstallationContent() {
         return `
             <h2>Installing Git on Different Platforms</h2>
-            
+
             <h3>Windows</h3>
             <ol>
                 <li>Download Git from <a href="https://git-scm.com/download/win" target="_blank" rel="noopener">git-scm.com</a></li>
@@ -574,14 +713,14 @@ class GitTutorialApp {
                 <li>Follow the installation wizard (default settings work fine)</li>
                 <li>Open Command Prompt or Git Bash to verify: <code>git --version</code></li>
             </ol>
-            
+
             <h3>macOS</h3>
             <ol>
                 <li><strong>Option 1:</strong> Install Xcode Command Line Tools<br><code>xcode-select --install</code></li>
                 <li><strong>Option 2:</strong> Use Homebrew<br><code>brew install git</code></li>
                 <li><strong>Option 3:</strong> Download from <a href="https://git-scm.com/download/mac" target="_blank" rel="noopener">git-scm.com</a></li>
             </ol>
-            
+
             <div class="code-block">
                 <h4>Verify Installation</h4>
                 <pre><code>git --version</code></pre>
@@ -594,7 +733,7 @@ class GitTutorialApp {
         return `
             <h2>Setting Up Git for First Use</h2>
             <p>Before you start using Git, you need to configure your identity. This information will be included in every commit you make.</p>
-            
+
             <div class="code-block">
                 <h3>Essential Configuration</h3>
                 <pre><code># Set your name
@@ -603,7 +742,7 @@ git config --global user.name "Your Full Name"
 # Set your email
 git config --global user.email "your.email@example.com"</code></pre>
             </div>
-            
+
             <div class="warning-box">
                 <h4>⚠️ Important</h4>
                 <p>Use the same email address for Git and GitHub to ensure your commits are properly attributed to your GitHub profile!</p>
@@ -615,31 +754,31 @@ git config --global user.email "your.email@example.com"</code></pre>
         return `
             <h2>Creating Your First Repository</h2>
             <p>Let's create your first Git repository and make your first commit!</p>
-            
+
             <div class="step-by-step">
                 <div class="step">
                     <h3>Step 1: Create a Project Folder</h3>
                     <pre><code>mkdir my-first-repo
 cd my-first-repo</code></pre>
                 </div>
-                
+
                 <div class="step">
                     <h3>Step 2: Initialize Git</h3>
                     <pre><code>git init</code></pre>
                 </div>
-                
+
                 <div class="step">
                     <h3>Step 3: Create a File</h3>
                     <pre><code>echo "# My First Repository" > README.md</code></pre>
                 </div>
-                
+
                 <div class="step">
                     <h3>Step 4: Add and Commit</h3>
                     <pre><code>git add README.md
 git commit -m "Initial commit"</code></pre>
                 </div>
             </div>
-            
+
             <div class="success-box">
                 <h4>🎉 Congratulations!</h4>
                 <p>You've just created your first Git repository and made your first commit!</p>
@@ -651,7 +790,7 @@ git commit -m "Initial commit"</code></pre>
         return `
             <h2>What is GitHub?</h2>
             <p>GitHub is a cloud-based platform that uses Git for version control. It provides a web interface for Git repositories plus additional collaboration features.</p>
-            
+
             <h3>Creating Your First Repository</h3>
             <ol>
                 <li>Sign up at <a href="https://github.com" target="_blank" rel="noopener">github.com</a></li>
@@ -670,7 +809,7 @@ git commit -m "Initial commit"</code></pre>
         return `
             <h2>Working with Teams on GitHub</h2>
             <p>GitHub enables seamless collaboration through features like pull requests, code reviews, and issue tracking.</p>
-            
+
             <h3>Fork and Pull Request Workflow</h3>
             <ol>
                 <li><strong>Fork:</strong> Create your copy of someone else's repository</li>
@@ -687,7 +826,7 @@ git commit -m "Initial commit"</code></pre>
         return `
             <h2>Deploy Websites with GitHub Pages</h2>
             <p>GitHub Pages lets you host static websites directly from your GitHub repository for free!</p>
-            
+
             <h3>Setting Up GitHub Pages</h3>
             <ol>
                 <li>Go to your repository on GitHub</li>
@@ -697,7 +836,7 @@ git commit -m "Initial commit"</code></pre>
                 <li>Choose your branch (usually "main") and folder ("/ (root)" or "/docs")</li>
                 <li>Click "Save"</li>
             </ol>
-            
+
             <p><strong>Your site will be available at:</strong><br>
             <code>https://username.github.io/repository-name</code></p>
         `;
@@ -707,7 +846,7 @@ git commit -m "Initial commit"</code></pre>
         return `
             <h2>Automate with GitHub Actions</h2>
             <p>GitHub Actions is a powerful CI/CD platform that allows you to automate your software workflows.</p>
-            
+
             <h3>Basic Workflow Example</h3>
             <pre><code># .github/workflows/ci.yml
 name: CI
@@ -726,7 +865,7 @@ jobs:
         return `
             <h2>Git Workflows</h2>
             <p>Learn industry-standard workflows for managing code with Git.</p>
-            
+
             <h3>GitHub Flow</h3>
             <ol>
                 <li>Create a branch</li>
@@ -743,7 +882,7 @@ jobs:
         return `
             <h2>Resolving Merge Conflicts</h2>
             <p>Learn how to handle merge conflicts like a pro.</p>
-            
+
             <h3>Common Conflict Scenarios</h3>
             <ul>
                 <li>Two people edit the same line</li>
@@ -757,7 +896,7 @@ jobs:
         return `
             <h2>Git Hooks</h2>
             <p>Automate tasks with Git hooks to enforce standards and improve workflow.</p>
-            
+
             <h3>Common Hook Types</h3>
             <ul>
                 <li><strong>pre-commit:</strong> Run before each commit</li>
@@ -765,32 +904,6 @@ jobs:
                 <li><strong>post-receive:</strong> Run after receiving a push</li>
             </ul>
         `;
-    }
-}
-
-// Filter commands function
-function filterCommands() {
-    const searchTerm = document.getElementById('commandSearch').value.toLowerCase();
-    const commandCards = document.querySelectorAll('.command-card');
-    
-    commandCards.forEach(card => {
-        const commandName = card.querySelector('.command-name').textContent.toLowerCase();
-        const commandDesc = card.querySelector('.command-description').textContent.toLowerCase();
-        
-        if (commandName.includes(searchTerm) || commandDesc.includes(searchTerm)) {
-            card.style.display = 'block';
-        } else {
-            card.style.display = 'none';
-        }
-    });
-}
-
-// Reset terminal function
-function resetTerminal() {
-    const terminalOutput = document.getElementById('terminalOutput');
-    if (terminalOutput) {
-        terminalOutput.innerHTML = '';
-        app.setupTerminal();
     }
 }
 
