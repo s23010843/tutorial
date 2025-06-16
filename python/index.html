@@ -20,13 +20,12 @@
     <meta property="og:image" content="https://s23010843.github.io/tutorial/python/assets/python-og.png">
 
     <!-- PWA -->
-    <link rel="manifest" href="manifest.json">
+    <link rel="manifest" href="../manifest.json">
     <meta name="theme-color" content="#3776ab">
     <link rel="apple-touch-icon" href="../assets/icon-192.png">
 
     <link rel="stylesheet" href="../styles.css">
-    <link rel="stylesheet" href="python-styles.css">
-    <link rel="icon" href="../assets/favicon.ico">
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <!-- Navigation -->
@@ -41,9 +40,10 @@
             <div class="nav-menu">
                 <a href="../" class="nav-link">← Back to Hub</a>
                 <a href="#basics" class="nav-link">Basics</a>
+                <a href="#oop" class="nav-link">OOP</a>
                 <a href="#advanced" class="nav-link">Advanced</a>
-                <a href="#projects" class="nav-link">Projects</a>
-                <a href="#practice" class="nav-link">Practice</a>
+                <a href="#web" class="nav-link">Web Dev</a>
+                <a href="#data" class="nav-link">Data Science</a>
             </div>
             <div class="nav-actions">
                 <button class="theme-toggle" id="themeToggle">🌙</button>
@@ -57,113 +57,160 @@
         <div class="hero-content">
             <div class="hero-icon">🐍</div>
             <h1>Master Python Programming</h1>
-            <p>Complete guide to Python from basics to advanced topics. Build real projects and master the most popular programming language.</p>
+            <p>Complete guide to Python from basics to advanced topics. Build real projects and master the most popular programming language for web development, data science, and automation.</p>
             <div class="hero-buttons">
                 <a href="#basics" class="btn btn-primary">Start Learning</a>
-                <a href="#practice" class="btn btn-secondary">Try Code Editor</a>
+                <a href="#projects" class="btn btn-secondary">View Projects</a>
             </div>
         </div>
     </section>
 
     <!-- Content Sections -->
-    <main>
-        <!-- Basics Section -->
+    <main class="tutorial-content">
         <section id="basics" class="content-section">
-            <div class="container">
-                <h2>Python Basics</h2>
-                <div class="lesson-grid">
-                    <div class="lesson-card" data-lesson="introduction">
-                        <h3>Introduction to Python</h3>
-                        <p>What is Python and why is it so popular? Learn the basics and set up your development environment.</p>
+            <h2>Python Fundamentals</h2>
+            <div class="lesson-grid">
+                <div class="lesson-card">
+                    <h3>Introduction to Python</h3>
+                    <p>Learn what Python is, its history, and why it's perfect for beginners and professionals alike.</p>
+                    <div class="lesson-meta">
+                        <span class="difficulty beginner">Beginner</span>
                         <span class="duration">15 min</span>
                     </div>
-                    <div class="lesson-card" data-lesson="variables">
-                        <h3>Variables and Data Types</h3>
-                        <p>Learn about Python variables, numbers, strings, and basic data types with practical examples.</p>
+                </div>
+                <div class="lesson-card">
+                    <h3>Installing Python</h3>
+                    <p>Set up Python on your system and configure your development environment.</p>
+                    <div class="lesson-meta">
+                        <span class="difficulty beginner">Beginner</span>
                         <span class="duration">20 min</span>
                     </div>
-                    <div class="lesson-card" data-lesson="control">
-                        <h3>Control Flow</h3>
-                        <p>Master if statements, loops, and control flow to make your programs dynamic and interactive.</p>
+                </div>
+                <div class="lesson-card">
+                    <h3>Variables and Data Types</h3>
+                    <p>Understanding Python's dynamic typing system and built-in data types.</p>
+                    <div class="lesson-meta">
+                        <span class="difficulty beginner">Beginner</span>
                         <span class="duration">25 min</span>
                     </div>
-                    <div class="lesson-card" data-lesson="functions">
-                        <h3>Functions</h3>
-                        <p>Write reusable code with functions. Learn parameters, return values, and scope.</p>
+                </div>
+                <div class="lesson-card">
+                    <h3>Control Flow</h3>
+                    <p>Master if statements, loops, and conditional logic in Python.</p>
+                    <div class="lesson-meta">
+                        <span class="difficulty beginner">Beginner</span>
                         <span class="duration">30 min</span>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Advanced Section -->
-        <section id="advanced" class="content-section bg-secondary">
-            <div class="container">
-                <h2>Advanced Python</h2>
-                <div class="lesson-grid">
-                    <div class="lesson-card" data-lesson="oop">
-                        <h3>Object-Oriented Programming</h3>
-                        <p>Master classes, objects, inheritance, and polymorphism in Python.</p>
-                        <span class="duration">45 min</span>
+        <section id="oop" class="content-section">
+            <h2>Object-Oriented Programming</h2>
+            <div class="lesson-grid">
+                <div class="lesson-card">
+                    <h3>Classes and Objects</h3>
+                    <p>Learn the fundamentals of OOP with Python classes and object instantiation.</p>
+                    <div class="lesson-meta">
+                        <span class="difficulty intermediate">Intermediate</span>
+                        <span class="duration">35 min</span>
                     </div>
-                    <div class="lesson-card" data-lesson="modules">
-                        <h3>Modules and Packages</h3>
-                        <p>Organize your code with modules and learn to use Python's extensive library ecosystem.</p>
+                </div>
+                <div class="lesson-card">
+                    <h3>Inheritance</h3>
+                    <p>Understand inheritance, method overriding, and polymorphism in Python.</p>
+                    <div class="lesson-meta">
+                        <span class="difficulty intermediate">Intermediate</span>
+                        <span class="duration">40 min</span>
+                    </div>
+                </div>
+                <div class="lesson-card">
+                    <h3>Special Methods</h3>
+                    <p>Explore dunder methods and operator overloading in Python classes.</p>
+                    <div class="lesson-meta">
+                        <span class="difficulty advanced">Advanced</span>
                         <span class="duration">30 min</span>
                     </div>
-                    <div class="lesson-card" data-lesson="files">
-                        <h3>File Handling</h3>
-                        <p>Read and write files, handle CSV data, and work with different file formats.</p>
-                        <span class="duration">25 min</span>
+                </div>
+            </div>
+        </section>
+
+        <section id="advanced" class="content-section">
+            <h2>Advanced Python</h2>
+            <div class="lesson-grid">
+                <div class="lesson-card">
+                    <h3>Decorators</h3>
+                    <p>Master Python decorators for cleaner, more maintainable code.</p>
+                    <div class="lesson-meta">
+                        <span class="difficulty advanced">Advanced</span>
+                        <span class="duration">45 min</span>
                     </div>
-                    <div class="lesson-card" data-lesson="web">
-                        <h3>Web Development</h3>
-                        <p>Build web applications with Flask and Django frameworks.</p>
+                </div>
+                <div class="lesson-card">
+                    <h3>Generators</h3>
+                    <p>Learn about generators, yield statements, and memory-efficient iteration.</p>
+                    <div class="lesson-meta">
+                        <span class="difficulty advanced">Advanced</span>
+                        <span class="duration">35 min</span>
+                    </div>
+                </div>
+                <div class="lesson-card">
+                    <h3>Context Managers</h3>
+                    <p>Understand the with statement and create custom context managers.</p>
+                    <div class="lesson-meta">
+                        <span class="difficulty advanced">Advanced</span>
+                        <span class="duration">30 min</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="web" class="content-section">
+            <h2>Web Development</h2>
+            <div class="lesson-grid">
+                <div class="lesson-card">
+                    <h3>Flask Basics</h3>
+                    <p>Build your first web application with Flask framework.</p>
+                    <div class="lesson-meta">
+                        <span class="difficulty intermediate">Intermediate</span>
                         <span class="duration">60 min</span>
                     </div>
                 </div>
+                <div class="lesson-card">
+                    <h3>Django Introduction</h3>
+                    <p>Get started with Django, Python's most popular web framework.</p>
+                    <div class="lesson-meta">
+                        <span class="difficulty intermediate">Intermediate</span>
+                        <span class="duration">75 min</span>
+                    </div>
+                </div>
             </div>
         </section>
 
-        <!-- Practice Section -->
-        <section id="practice" class="content-section">
-            <div class="container">
-                <h2>Interactive Python Editor</h2>
-                <div class="code-editor">
-                    <div class="editor-header">
-                        <span>Python Code Editor</span>
-                        <button onclick="runPythonCode()" class="run-btn">▶ Run</button>
+        <section id="data" class="content-section">
+            <h2>Data Science</h2>
+            <div class="lesson-grid">
+                <div class="lesson-card">
+                    <h3>NumPy Fundamentals</h3>
+                    <p>Learn numerical computing with NumPy arrays and operations.</p>
+                    <div class="lesson-meta">
+                        <span class="difficulty intermediate">Intermediate</span>
+                        <span class="duration">50 min</span>
                     </div>
-                    <textarea id="pythonEditor" placeholder="# Write your Python code here
-print('Hello, Python!')
-
-# Try some variables
-name = 'World'
-print(f'Hello, {name}!')
-
-# Try a simple function
-def greet(name):
-    return f'Hello, {name}!'
-
-print(greet('Python Developer'))"></textarea>
-                    <div class="output-section">
-                        <h4>Output:</h4>
-                        <pre id="output"></pre>
+                </div>
+                <div class="lesson-card">
+                    <h3>Pandas for Data Analysis</h3>
+                    <p>Master data manipulation and analysis with Pandas library.</p>
+                    <div class="lesson-meta">
+                        <span class="difficulty intermediate">Intermediate</span>
+                        <span class="duration">60 min</span>
                     </div>
                 </div>
             </div>
         </section>
     </main>
 
-    <!-- Lesson Modal -->
-    <div id="lessonModal" class="modal">
-        <div class="modal-content">
-            <button class="modal-close">&times;</button>
-            <div id="lessonContent"></div>
-        </div>
-    </div>
-
     <script src="../app.js"></script>
-    <script src="python-app.js"></script>
+    <script src="app.js"></script>
 </body>
 </html>
