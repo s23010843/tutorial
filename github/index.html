@@ -1,0 +1,324 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Git & GitHub Tutorial - Complete Professional Guide | Learn Version Control</title>
+    <meta name="description" content="Master Git and GitHub with our comprehensive, professional tutorial. Interactive lessons, terminal simulator, and offline support. Perfect for developers and beginners.">
+    <meta name="keywords" content="git tutorial, github tutorial, version control, git commands, github guide, learn git, git for beginners, professional git course">
+    <meta name="author" content="S23010843">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://s23010843.github.io/tutorial/github">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://s23010843.github.io/tutorial/github">
+    <meta property="og:title" content="Git & GitHub Tutorial - Complete Professional Guide">
+    <meta property="og:description" content="Master Git and GitHub with our comprehensive, professional tutorial. Interactive lessons, terminal simulator, and offline support.">
+    <meta property="og:image" content="https://s23010843.github.io/tutorial/github/assets/og-image.png">
+    <meta property="og:site_name" content="Git Tutorial Pro">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://s23010843.github.io/tutorial/github">
+    <meta property="twitter:title" content="Git & GitHub Tutorial - Complete Professional Guide">
+    <meta property="twitter:description" content="Master Git and GitHub with our comprehensive, professional tutorial. Interactive lessons, terminal simulator, and offline support.">
+    <meta property="twitter:image" content="https://s23010843.github.io/tutorial/github/assets/og-image.png">
+
+    <!-- PWA Manifest -->
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#1f2937">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="Git Tutorial Pro">
+    <link rel="apple-touch-icon" href="assets/icon-192.png">
+
+    <!-- Preconnect for performance -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": ["Course", "WebSite"],
+      "name": "Git & GitHub Tutorial - Professional Guide",
+      "description": "Complete professional guide to learning Git and GitHub from scratch with interactive examples",
+      "url": "https://s23010843.github.io/tutorial/github",
+      "provider": {
+        "@type": "Organization",
+        "name": "S23010843 Professional Tutorials"
+      },
+      "educationalLevel": "Beginner to Advanced",
+      "inLanguage": "en",
+      "courseMode": "online",
+      "isAccessibleForFree": true,
+      "keywords": "git, github, version control, tutorial, programming",
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": "https://s23010843.github.io/tutorial/github#search={search_term_string}",
+        "query-input": "required name=search_term_string"
+      }
+    }
+    </script>
+
+    <link rel="stylesheet" href="styles.css">
+    <link rel="icon" href="assets/favicon.ico">
+</head>
+<body>
+    <!-- Loading Screen -->
+    <div id="loadingScreen" class="loading-screen">
+        <div class="loading-spinner"></div>
+        <p>Loading Git Tutorial Pro...</p>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <img src="assets/git-icon.svg" alt="Git Logo" width="32" height="32">
+                <span>Git Tutorial Pro</span>
+            </div>
+            <div class="nav-menu" id="navMenu">
+                <a href="#/" class="nav-link" data-route="home">Home</a>
+                <a href="#/basics" class="nav-link" data-route="basics">Basics</a>
+                <a href="#/commands" class="nav-link" data-route="commands">Commands</a>
+                <a href="#/github" class="nav-link" data-route="github">GitHub</a>
+                <a href="#/practice" class="nav-link" data-route="practice">Practice</a>
+                <a href="#/advanced" class="nav-link" data-route="advanced">Advanced</a>
+            </div>
+            <div class="nav-actions">
+                <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+                    <span class="theme-icon">🌙</span>
+                </button>
+                <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main id="mainContent">
+        <!-- Home Page -->
+        <div id="page-home" class="page active">
+            <section class="hero">
+                <div class="hero-background"></div>
+                <div class="hero-content">
+                    <h1 class="hero-title">Master Git & GitHub Like a Pro</h1>
+                    <p class="hero-subtitle">Complete professional tutorial with interactive examples, terminal simulator, and real-world projects</p>
+                    <div class="hero-buttons">
+                        <button class="btn btn-primary" onclick="router.navigate('/basics')">Start Learning</button>
+                        <button class="btn btn-secondary" id="installBtn">Install App</button>
+                    </div>
+                    <div class="hero-stats">
+                        <div class="stat">
+                            <span class="stat-number">50+</span>
+                            <span class="stat-label">Lessons</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-number">100%</span>
+                            <span class="stat-label">Free</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-number">Offline</span>
+                            <span class="stat-label">Ready</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="features">
+                <div class="container">
+                    <h2>Why Choose Our Tutorial?</h2>
+                    <div class="features-grid">
+                        <div class="feature-card">
+                            <div class="feature-icon">🚀</div>
+                            <h3>Professional Quality</h3>
+                            <p>Industry-standard practices and real-world examples from experienced developers</p>
+                        </div>
+                        <div class="feature-card">
+                            <div class="feature-icon">📱</div>
+                            <h3>Mobile Optimized</h3>
+                            <p>Perfect experience on all devices with responsive design and touch-friendly interface</p>
+                        </div>
+                        <div class="feature-card">
+                            <div class="feature-icon">⚡</div>
+                            <h3>Interactive Learning</h3>
+                            <p>Practice with our built-in terminal simulator and hands-on exercises</p>
+                        </div>
+                        <div class="feature-card">
+                            <div class="feature-icon">🔄</div>
+                            <h3>Works Offline</h3>
+                            <p>Continue learning anywhere with full offline support and PWA technology</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- Basics Page -->
+        <div id="page-basics" class="page">
+            <section class="page-header">
+                <div class="container">
+                    <h1>Git Basics</h1>
+                    <p>Foundation concepts to get you started with version control</p>
+                </div>
+            </section>
+            <section class="content">
+                <div class="container">
+                    <div class="lesson-grid" id="basicsLessons">
+                        <!-- Content populated by JavaScript -->
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- Commands Page -->
+        <div id="page-commands" class="page">
+            <section class="page-header">
+                <div class="container">
+                    <h1>Essential Git Commands</h1>
+                    <p>Master the most important Git commands with interactive examples</p>
+                </div>
+            </section>
+            <section class="content">
+                <div class="container">
+                    <div class="command-search">
+                        <input type="text" id="commandSearch" placeholder="Search commands..." onkeyup="filterCommands()">
+                    </div>
+                    <div class="command-grid" id="commandGrid">
+                        <!-- Content populated by JavaScript -->
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- GitHub Page -->
+        <div id="page-github" class="page">
+            <section class="page-header">
+                <div class="container">
+                    <h1>GitHub Integration</h1>
+                    <p>Learn collaboration, project management, and deployment with GitHub</p>
+                </div>
+            </section>
+            <section class="content">
+                <div class="container">
+                    <div class="lesson-grid" id="githubLessons">
+                        <!-- Content populated by JavaScript -->
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- Practice Page -->
+        <div id="page-practice" class="page">
+            <section class="page-header">
+                <div class="container">
+                    <h1>Interactive Practice</h1>
+                    <p>Practice Git commands in our safe, simulated environment</p>
+                </div>
+            </section>
+            <section class="content">
+                <div class="container">
+                    <div class="practice-area">
+                        <div class="terminal-simulator">
+                            <div class="terminal-header">
+                                <div class="terminal-controls">
+                                    <span class="control close"></span>
+                                    <span class="control minimize"></span>
+                                    <span class="control maximize"></span>
+                                </div>
+                                <span class="terminal-title">Git Terminal Simulator</span>
+                                <button class="terminal-reset" onclick="resetTerminal()">Reset</button>
+                            </div>
+                            <div class="terminal-body">
+                                <div id="terminalOutput"></div>
+                                <div class="terminal-input">
+                                    <span class="prompt">$ </span>
+                                    <input type="text" id="terminalInput" placeholder="Type git commands here...">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- Advanced Page -->
+        <div id="page-advanced" class="page">
+            <section class="page-header">
+                <div class="container">
+                    <h1>Advanced Topics</h1>
+                    <p>Deep dive into advanced Git workflows and best practices</p>
+                </div>
+            </section>
+            <section class="content">
+                <div class="container">
+                    <div class="lesson-grid" id="advancedLessons">
+                        <!-- Content populated by JavaScript -->
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Git Tutorial Pro</h3>
+                    <p>Professional Git and GitHub training for developers of all levels.</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="#/" data-route="home">Home</a></li>
+                        <li><a href="#/basics" data-route="basics">Basics</a></li>
+                        <li><a href="#/commands" data-route="commands">Commands</a></li>
+                        <li><a href="#/github" data-route="github">GitHub</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Resources</h4>
+                    <ul>
+                        <li><a href="https://git-scm.com" target="_blank" rel="noopener">Git SCM</a></li>
+                        <li><a href="https://github.com" target="_blank" rel="noopener">GitHub</a></li>
+                        <li><a href="#/practice" data-route="practice">Practice</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; <span class="current-year">2025</span> S23010843 Git Tutorial Pro. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Lesson Modal -->
+    <div id="lessonModal" class="modal">
+        <div class="modal-content">
+            <button class="modal-close" aria-label="Close modal">&times;</button>
+            <div id="lessonContent"></div>
+        </div>
+    </div>
+
+    <!-- Offline Status -->
+    <div id="offlineStatus" class="offline-status">
+        <span>You're offline. Content is cached for offline viewing.</span>
+    </div>
+
+    <!-- Progress Indicator -->
+    <div id="progressBar" class="progress-bar">
+        <div class="progress-fill"></div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
