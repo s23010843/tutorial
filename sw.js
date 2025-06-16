@@ -3,50 +3,48 @@ const OFFLINE_CACHE = 'tutorials-offline-v2';
 const DYNAMIC_CACHE = 'tutorials-dynamic-v2';
 
 const urlsToCache = [
-  '/tutorial/',
-  '/tutorial/index.html',
-  '/tutorial/styles.css',
-  '/tutorial/app.js',
-  '/tutorial/manifest.json',
-  '/tutorial/assets/logo.svg',
-  '/tutorial/assets/icon-192.png',
-  '/tutorial/assets/icon-512.png',
-  '/tutorial/offline.html',
-  '/tutorial/404.html',
-  '/tutorial/500.html',
-  '/tutorial/403.html',
+  '/',
+  '/index.html',
+  '/styles.css',
+  '/app.js',
+  '/manifest.json',
+  '/assets/logo.svg',
+  '/offline.html',
+  '/404.html',
+  '/500.html',
+  '/403.html',
   // Tutorial pages
-  '/tutorial/github/',
-  '/tutorial/python/',
-  '/tutorial/java/',
-  '/tutorial/cpp/',
-  '/tutorial/csharp/',
-  '/tutorial/c/',
-  '/tutorial/android/',
-  '/tutorial/javascript/',
-  '/tutorial/go/',
-  '/tutorial/rust/',
+  '/github/',
+  '/python/',
+  '/java/',
+  '/cpp/',
+  '/csharp/',
+  '/c/',
+  '/android/',
+  '/javascript/',
+  '/go/',
+  '/rust/',
   // Tutorial assets
-  '/tutorial/github/styles.css',
-  '/tutorial/python/styles.css',
-  '/tutorial/java/styles.css',
-  '/tutorial/cpp/styles.css',
-  '/tutorial/csharp/styles.css',
-  '/tutorial/c/styles.css',
-  '/tutorial/android/styles.css',
-  '/tutorial/javascript/styles.css',
-  '/tutorial/go/styles.css',
-  '/tutorial/rust/styles.css'
+  '/github/styles.css',
+  '/python/styles.css',
+  '/java/styles.css',
+  '/cpp/styles.css',
+  '/csharp/styles.css',
+  '/c/styles.css',
+  '/android/styles.css',
+  '/javascript/styles.css',
+  '/go/styles.css',
+  '/rust/styles.css'
 ];
 
 const criticalRoutes = [
-  '/tutorial/github/',
-  '/tutorial/python/',
-  '/tutorial/java/',
-  '/tutorial/cpp/',
-  '/tutorial/csharp/',
-  '/tutorial/c/',
-  '/tutorial/android/'
+  '/github/',
+  '/python/',
+  '/java/',
+  '/cpp/',
+  '/csharp/',
+  '/c/',
+  '/android/'
 ];
 
 // Install service worker and cache resources
@@ -61,10 +59,10 @@ self.addEventListener('install', function(event) {
       caches.open(OFFLINE_CACHE).then(function(cache) {
         console.log('Opened offline cache');
         return cache.addAll([
-          '/tutorial/offline.html',
-          '/tutorial/404.html',
-          '/tutorial/500.html',
-          '/tutorial/403.html'
+          '/offline.html',
+          '/404.html',
+          '/500.html',
+          '/403.html'
         ]);
       })
     ])
@@ -160,13 +158,13 @@ async function handleNavigationRequest(request) {
     }
 
     // Try index.html for SPA routing
-    const indexResponse = await caches.match('/tutorial/index.html');
+    const indexResponse = await caches.match('/index.html');
     if (indexResponse) {
       return indexResponse;
     }
 
     // Fallback to offline page
-    return caches.match('/tutorial/offline.html');
+    return caches.match('/offline.html');
   }
 }
 
@@ -311,25 +309,25 @@ async function doBackgroundSync() {
 self.addEventListener('push', function(event) {
   const options = {
     body: event.data ? event.data.text() : 'New programming content available!',
-    icon: '/tutorial/assets/icon-192.png',
-    badge: '/tutorial/assets/icon-72.png',
-    image: '/tutorial/assets/notification-image.png',
+    icon: '/assets/logo.svg',
+    badge: '/assets/logo.svg',
+    image: '/assets/logo.svg',
     vibrate: [100, 50, 100],
     data: {
       dateOfArrival: Date.now(),
       primaryKey: 1,
-      url: '/tutorial/'
+      url: '/'
     },
     actions: [
       {
         action: 'explore', 
         title: 'View Tutorials',
-        icon: '/tutorial/assets/action-explore.png'
+        icon: '/assets/logo.svg'
       },
       {
         action: 'close',
         title: 'Close',
-        icon: '/tutorial/assets/action-close.png'
+        icon: '/assets/logo.svg'
       }
     ],
     tag: 'programming-tutorials',
@@ -348,7 +346,7 @@ self.addEventListener('notificationclick', function(event) {
 
   if (event.action === 'explore') {
     event.waitUntil(
-      clients.openWindow('/tutorial/')
+      clients.openWindow('/')
     );
   } else if (event.action === 'close') {
     // Just close the notification
@@ -356,7 +354,7 @@ self.addEventListener('notificationclick', function(event) {
   } else {
     // Default click action
     event.waitUntil(
-      clients.openWindow('/tutorial/')
+      clients.openWindow('/')
     );
   }
 });

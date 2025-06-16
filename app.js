@@ -105,7 +105,7 @@ class TutorialApp {
     }
 
     getRouteFromUrl(url) {
-        const path = url.pathname.replace('/tutorial/', '').replace(/\/$/, '');
+        const path = url.pathname.replace(/^\//, '').replace(/\/$/, '');
         return path || 'home';
     }
 
@@ -498,8 +498,8 @@ class TutorialApp {
         if ('serviceWorker' in navigator) {
             window.addEventListener('load', async () => {
                 try {
-                    const registration = await navigator.serviceWorker.register('/tutorial/sw.js', {
-                        scope: '/tutorial/',
+                    const registration = await navigator.serviceWorker.register('/sw.js', {
+                        scope: '/',
                         updateViaCache: 'none'
                     });
                     
@@ -585,19 +585,21 @@ class TutorialApp {
         const hamburger = document.getElementById('hamburger');
         const navMenu = document.getElementById('navMenu');
         
-        hamburger?.addEventListener('click', () => {
+        if (hamburger && navMenu) {
+            hamburger.addEventListener('click', () => {
             const isActive = navMenu?.classList.contains('active');
             
             if (isActive) {
-                navMenu?.classList.remove('active');
+                navMenu.classList.remove('active');
                 hamburger.classList.remove('active');
                 document.body.classList.remove('menu-open');
             } else {
-                navMenu?.classList.add('active');
+                navMenu.classList.add('active');
                 hamburger.classList.add('active');
                 document.body.classList.add('menu-open');
             }
-        });
+            });
+        }
 
         // Close mobile menu when clicking outside
         document.addEventListener('click', (e) => {
