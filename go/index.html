@@ -4,28 +4,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Go Programming Tutorial - Complete Professional Guide | Learn Golang Development</title>
-    <meta name="description" content="Master Go programming with our comprehensive tutorial. From basics to advanced topics including concurrency, microservices, and cloud development.">
-    <meta name="keywords" content="go tutorial, learn go, golang programming, go course, go basics, go advanced, microservices, golang">
-    <meta name="author" content="S23010843">
-    <meta name="robots" content="index, follow">
-    
-    <link rel="canonical" href="https://s23010843.github.io/tutorial/go">
-    
-    <!-- Open Graph -->
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://s23010843.github.io/tutorial/go">
-    <meta property="og:title" content="Go Programming Tutorial - Complete Professional Guide">
-    <meta property="og:description" content="Master Go programming with comprehensive tutorials covering basics to advanced cloud development.">
-    <meta property="og:image" content="https://s23010843.github.io/tutorial/go/assets/go-og.png">
-
-    <!-- PWA -->
-    <link rel="manifest" href="../manifest.json">
-    <meta name="theme-color" content="#00add8">
-    <link rel="apple-touch-icon" href="../assets/icon-192.png">
-
-    <link rel="stylesheet" href="../styles.css">
+    <title>Go Programming Tutorial - Programming Tutorials Pro</title>
+    <meta name="description" content="Master Go programming for backend development, microservices, and cloud-native applications.">
     <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="../styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
 </head>
 <body>
     <!-- Navigation -->
@@ -42,12 +27,16 @@
                 <a href="#basics" class="nav-link">Basics</a>
                 <a href="#concurrency" class="nav-link">Concurrency</a>
                 <a href="#web" class="nav-link">Web Dev</a>
-                <a href="#cloud" class="nav-link">Cloud</a>
-                <a href="#advanced" class="nav-link">Advanced</a>
+                <a href="#microservices" class="nav-link">Microservices</a>
+                <a href="#projects" class="nav-link">Projects</a>
             </div>
             <div class="nav-actions">
                 <button class="theme-toggle" id="themeToggle">🌙</button>
-                <button class="install-btn" id="installBtn" style="display: none;">Install</button>
+                <button class="hamburger" id="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
             </div>
         </div>
     </nav>
@@ -55,9 +44,9 @@
     <!-- Hero Section -->
     <section class="hero go-hero">
         <div class="hero-content">
-            <div class="hero-icon">🐹</div>
+            <div class="hero-icon">🚀</div>
             <h1>Master Go Programming</h1>
-            <p>Complete guide to Go from basics to advanced cloud development. Build fast, reliable, and efficient software with Google's powerful programming language.</p>
+            <p>Learn Go for backend development, microservices, and cloud-native applications. Build scalable, concurrent systems with Google's modern programming language.</p>
             <div class="hero-buttons">
                 <a href="#basics" class="btn btn-primary">Start Learning</a>
                 <a href="#projects" class="btn btn-secondary">View Projects</a>
@@ -72,7 +61,7 @@
             <div class="lesson-grid">
                 <div class="lesson-card">
                     <h3>Introduction to Go</h3>
-                    <p>Learn about Go's philosophy, installation, and your first program.</p>
+                    <p>Learn about Go's philosophy, installation, and setting up your development environment.</p>
                     <div class="lesson-meta">
                         <span class="difficulty beginner">Beginner</span>
                         <span class="duration">20 min</span>
@@ -80,15 +69,15 @@
                 </div>
                 <div class="lesson-card">
                     <h3>Variables and Types</h3>
-                    <p>Understanding Go's type system, variables, and constants.</p>
+                    <p>Understanding Go's type system, variables, constants, and type inference.</p>
                     <div class="lesson-meta">
                         <span class="difficulty beginner">Beginner</span>
                         <span class="duration">25 min</span>
                     </div>
                 </div>
                 <div class="lesson-card">
-                    <h3>Functions</h3>
-                    <p>Master Go functions, multiple return values, and error handling.</p>
+                    <h3>Functions and Packages</h3>
+                    <p>Master Go functions, multiple return values, and package organization.</p>
                     <div class="lesson-meta">
                         <span class="difficulty beginner">Beginner</span>
                         <span class="duration">30 min</span>
@@ -96,7 +85,7 @@
                 </div>
                 <div class="lesson-card">
                     <h3>Structs and Methods</h3>
-                    <p>Learn about Go's approach to object-oriented programming.</p>
+                    <p>Learn Go's approach to object-oriented programming with structs and methods.</p>
                     <div class="lesson-meta">
                         <span class="difficulty intermediate">Intermediate</span>
                         <span class="duration">35 min</span>
@@ -106,19 +95,63 @@
         </section>
 
         <section id="concurrency" class="content-section">
-            <h2>Concurrency</h2>
+            <h2>Concurrency in Go</h2>
             <div class="lesson-grid">
                 <div class="lesson-card">
                     <h3>Goroutines</h3>
-                    <p>Master Go's lightweight threads for concurrent programming.</p>
+                    <p>Master Go's lightweight threads and concurrent programming patterns.</p>
                     <div class="lesson-meta">
-                        <span class="difficulty advanced">Advanced</span>
+                        <span class="difficulty intermediate">Intermediate</span>
                         <span class="duration">40 min</span>
                     </div>
                 </div>
                 <div class="lesson-card">
                     <h3>Channels</h3>
-                    <p>Learn about channels for communication between goroutines.</p>
+                    <p>Learn Go's channel-based communication and synchronization mechanisms.</p>
+                    <div class="lesson-meta">
+                        <span class="difficulty intermediate">Intermediate</span>
+                        <span class="duration">45 min</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="web" class="content-section">
+            <h2>Web Development</h2>
+            <div class="lesson-grid">
+                <div class="lesson-card">
+                    <h3>HTTP Server</h3>
+                    <p>Build web servers and REST APIs with Go's standard library.</p>
+                    <div class="lesson-meta">
+                        <span class="difficulty intermediate">Intermediate</span>
+                        <span class="duration">50 min</span>
+                    </div>
+                </div>
+                <div class="lesson-card">
+                    <h3>Middleware and Routing</h3>
+                    <p>Implement middleware patterns and advanced routing in Go web applications.</p>
+                    <div class="lesson-meta">
+                        <span class="difficulty advanced">Advanced</span>
+                        <span class="duration">40 min</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="microservices" class="content-section">
+            <h2>Microservices</h2>
+            <div class="lesson-grid">
+                <div class="lesson-card">
+                    <h3>Service Architecture</h3>
+                    <p>Design and implement microservices architecture with Go.</p>
+                    <div class="lesson-meta">
+                        <span class="difficulty advanced">Advanced</span>
+                        <span class="duration">60 min</span>
+                    </div>
+                </div>
+                <div class="lesson-card">
+                    <h3>Docker & Deployment</h3>
+                    <p>Containerize Go applications and deploy to cloud platforms.</p>
                     <div class="lesson-meta">
                         <span class="difficulty advanced">Advanced</span>
                         <span class="duration">45 min</span>
@@ -126,9 +159,36 @@
                 </div>
             </div>
         </section>
+
+        <section id="projects" class="content-section">
+            <h2>Go Projects</h2>
+            <div class="lesson-grid">
+                <div class="lesson-card project-card">
+                    <h3>REST API Server</h3>
+                    <p>Build a complete REST API with database integration and authentication.</p>
+                    <div class="lesson-meta">
+                        <span class="difficulty intermediate">Intermediate</span>
+                        <span class="duration">120 min</span>
+                    </div>
+                </div>
+                <div class="lesson-card project-card">
+                    <h3>Concurrent Web Crawler</h3>
+                    <p>Create a high-performance web crawler using Go's concurrency features.</p>
+                    <div class="lesson-meta">
+                        <span class="difficulty advanced">Advanced</span>
+                        <span class="duration">90 min</span>
+                    </div>
+                </div>
+            </div>
+        </section>
     </main>
 
-    <script src="../app.js"></script>
+    <footer class="tutorial-footer">
+        <div class="container">
+            <p>&copy; 2024 Programming Tutorials Pro. All rights reserved.</p>
+        </div>
+    </footer>
+
     <script src="app.js"></script>
 </body>
 </html>

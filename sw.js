@@ -1,5 +1,4 @@
-
-const CACHE_NAME = 'programming-tutorials-v2';
+const CACHE_NAME = 'programming-tutorials-v2.0';
 const OFFLINE_CACHE = 'tutorials-offline-v2';
 const DYNAMIC_CACHE = 'tutorials-dynamic-v2';
 
@@ -9,18 +8,35 @@ const urlsToCache = [
   '/tutorial/styles.css',
   '/tutorial/app.js',
   '/tutorial/manifest.json',
+  '/tutorial/assets/logo.svg',
+  '/tutorial/assets/icon-192.png',
+  '/tutorial/assets/icon-512.png',
   '/tutorial/offline.html',
   '/tutorial/404.html',
   '/tutorial/500.html',
   '/tutorial/403.html',
-  '/tutorial/README.md',
-  '/tutorial/SECURITY.md',
-  '/tutorial/assets/icon-192.png',
-  '/tutorial/assets/icon-512.png',
-  '/tutorial/assets/logo.svg',
-  '/tutorial/assets/favicon.ico',
-  '/tutorial/assets/favicon.svg',
-  'https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap'
+  // Tutorial pages
+  '/tutorial/github/',
+  '/tutorial/python/',
+  '/tutorial/java/',
+  '/tutorial/cpp/',
+  '/tutorial/csharp/',
+  '/tutorial/c/',
+  '/tutorial/android/',
+  '/tutorial/javascript/',
+  '/tutorial/go/',
+  '/tutorial/rust/',
+  // Tutorial assets
+  '/tutorial/github/styles.css',
+  '/tutorial/python/styles.css',
+  '/tutorial/java/styles.css',
+  '/tutorial/cpp/styles.css',
+  '/tutorial/csharp/styles.css',
+  '/tutorial/c/styles.css',
+  '/tutorial/android/styles.css',
+  '/tutorial/javascript/styles.css',
+  '/tutorial/go/styles.css',
+  '/tutorial/rust/styles.css'
 ];
 
 const criticalRoutes = [
@@ -60,7 +76,7 @@ self.addEventListener('install', function(event) {
 self.addEventListener('activate', function(event) {
   console.log('Service Worker activating');
   const cacheWhitelist = [CACHE_NAME, OFFLINE_CACHE, DYNAMIC_CACHE];
-  
+
   event.waitUntil(
     Promise.all([
       caches.keys().then(function(cacheNames) {
@@ -126,29 +142,29 @@ async function handleNavigationRequest(request) {
   try {
     // Try network first
     const networkResponse = await fetch(request);
-    
+
     // Cache successful responses
     if (networkResponse.ok) {
       const cache = await caches.open(DYNAMIC_CACHE);
       cache.put(request, networkResponse.clone());
     }
-    
+
     return networkResponse;
   } catch (error) {
     console.log('Network failed for navigation, trying cache');
-    
+
     // Try cache
     const cachedResponse = await caches.match(request);
     if (cachedResponse) {
       return cachedResponse;
     }
-    
+
     // Try index.html for SPA routing
     const indexResponse = await caches.match('/tutorial/index.html');
     if (indexResponse) {
       return indexResponse;
     }
-    
+
     // Fallback to offline page
     return caches.match('/tutorial/offline.html');
   }
@@ -162,7 +178,7 @@ async function handleCriticalResource(request) {
     updateCacheInBackground(request);
     return cachedResponse;
   }
-  
+
   // Not in cache, fetch from network
   try {
     const networkResponse = await fetch(request);
@@ -183,7 +199,7 @@ async function handleFontRequest(request) {
   if (cachedResponse) {
     return cachedResponse;
   }
-  
+
   try {
     const networkResponse = await fetch(request);
     if (networkResponse.ok) {
@@ -200,7 +216,7 @@ async function handleFontRequest(request) {
 async function handleSameOriginRequest(request) {
   // Stale while revalidate
   const cachedResponse = await caches.match(request);
-  
+
   const networkPromise = fetch(request).then(response => {
     if (response.ok) {
       const cache = caches.open(DYNAMIC_CACHE);
@@ -208,7 +224,7 @@ async function handleSameOriginRequest(request) {
     }
     return response;
   }).catch(() => null);
-  
+
   return cachedResponse || networkPromise || getOfflineFallback(request);
 }
 
@@ -241,12 +257,12 @@ async function updateCacheInBackground(request) {
 
 async function getOfflineFallback(request) {
   const url = new URL(request.url);
-  
+
   // Return appropriate offline page based on request
   if (request.mode === 'navigate') {
     return caches.match('/tutorial/offline.html');
   }
-  
+
   // For other requests, return a basic response
   return new Response(
     JSON.stringify({ error: 'Content not available offline' }),
@@ -271,7 +287,7 @@ async function doBackgroundSync() {
   try {
     // Sync any pending data when back online
     console.log('Background sync triggered');
-    
+
     // Update critical caches
     const cache = await caches.open(CACHE_NAME);
     const promises = urlsToCache.map(url => {
@@ -283,7 +299,7 @@ async function doBackgroundSync() {
         console.log('Failed to update cache for:', url, error);
       });
     });
-    
+
     await Promise.all(promises);
     console.log('Background sync completed');
   } catch (error) {
@@ -320,7 +336,7 @@ self.addEventListener('push', function(event) {
     requireInteraction: false,
     silent: false
   };
-  
+
   event.waitUntil(
     self.registration.showNotification('Programming Tutorials Pro', options)
   );
@@ -329,7 +345,7 @@ self.addEventListener('push', function(event) {
 // Handle notification clicks
 self.addEventListener('notificationclick', function(event) {
   event.notification.close();
-  
+
   if (event.action === 'explore') {
     event.waitUntil(
       clients.openWindow('/tutorial/')
@@ -355,11 +371,11 @@ self.addEventListener('message', function(event) {
   if (event.data && event.data.type === 'SKIP_WAITING') {
     self.skipWaiting();
   }
-  
+
   if (event.data && event.data.type === 'GET_VERSION') {
     event.ports[0].postMessage({ version: CACHE_NAME });
   }
-  
+
   if (event.data && event.data.type === 'CACHE_URLS') {
     event.waitUntil(
       cacheUrls(event.data.urls)
@@ -378,7 +394,7 @@ async function cacheUrls(urls) {
       console.log('Failed to cache URL:', url, error);
     });
   });
-  
+
   return Promise.all(promises);
 }
 
@@ -417,7 +433,7 @@ async function cleanupOldCaches() {
     name !== OFFLINE_CACHE &&
     name !== DYNAMIC_CACHE
   );
-  
+
   return Promise.all(
     oldCaches.map(name => caches.delete(name))
   );
@@ -433,7 +449,7 @@ function logPerformance(eventType, startTime) {
 async function manageCacheSize(cacheName, maxSize = 50) {
   const cache = await caches.open(cacheName);
   const keys = await cache.keys();
-  
+
   if (keys.length > maxSize) {
     // Remove oldest entries
     const entriesToDelete = keys.slice(0, keys.length - maxSize);

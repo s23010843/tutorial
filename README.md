@@ -157,13 +157,16 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 | Language | Lessons | Difficulty | Status |
 |----------|---------|------------|--------|
-| Git & GitHub | 50+ | Beginner | ✅ Available |
-| Python | 80+ | Beginner | ✅ Available |
-| Java | 70+ | Intermediate | ✅ Available |
-| C++ | 60+ | Advanced | ✅ Available |
-| C# | 65+ | Intermediate | ✅ Available |
-| C | 45+ | Beginner | ✅ Available |
-| Android | 90+ | Intermediate | ✅ Available |
+| Git & GitHub | 60+ | Beginner | ✅ Available |
+| Python | 100+ | Beginner | ✅ Available |
+| Java | 90+ | Intermediate | ✅ Available |
+| C++ | 80+ | Advanced | ✅ Available |
+| C# | 85+ | Intermediate | ✅ Available |
+| C | 70+ | Beginner | ✅ Available |
+| JavaScript | 95+ | Beginner | ✅ Available |
+| Go | 75+ | Intermediate | ✅ Available |
+| Rust | 65+ | Advanced | ✅ Available |
+| Android | 110+ | Intermediate | ✅ Available |
 
 ---
 

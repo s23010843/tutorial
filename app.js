@@ -237,14 +237,16 @@ class TutorialApp {
 
     generateTutorialCards() {
         const tutorials = [
-            { icon: '🔧', name: 'Git & GitHub', desc: 'Master version control and collaboration with our comprehensive Git and GitHub tutorial.', difficulty: 'beginner', lessons: '50+', href: 'github/', featured: true },
-            { icon: '🐍', name: 'Python Programming', desc: 'Learn Python from basics to advanced topics including web development, data science, and automation.', difficulty: 'beginner', lessons: '80+', href: 'python/' },
-            { icon: '☕', name: 'Java Development', desc: 'Master Java programming with object-oriented concepts, frameworks, and enterprise development.', difficulty: 'intermediate', lessons: '70+', href: 'java/' },
-            { icon: '⚡', name: 'C++ Programming', desc: 'Learn C++ for system programming, game development, and high-performance applications.', difficulty: 'advanced', lessons: '60+', href: 'cpp/' },
-            { icon: '🎯', name: 'C# Development', desc: 'Build modern applications with C# and .NET framework. Desktop, web, and mobile development.', difficulty: 'intermediate', lessons: '65+', href: 'csharp/' },
-            { icon: '⚙️', name: 'C Programming', desc: 'Master the foundation of programming with C language. System programming and embedded development.', difficulty: 'beginner', lessons: '45+', href: 'c/' },
-            { icon: '📱', name: 'Android Development', desc: 'Create mobile apps with Android development using Java, Kotlin, and modern Android frameworks.', difficulty: 'intermediate', lessons: '90+', href: 'android/' },
-            { icon: '🚀', name: 'More Coming Soon', desc: "We're working on tutorials for React, Node.js, PHP, and more exciting technologies.", difficulty: 'beginner', lessons: 'Coming Soon', href: '#', comingSoon: true }
+            { icon: '🔧', name: 'Git & GitHub', desc: 'Master version control and collaboration with our comprehensive Git and GitHub tutorial. Essential for every developer.', difficulty: 'beginner', lessons: '60+', href: 'github/', featured: true },
+            { icon: '🐍', name: 'Python Programming', desc: 'Learn Python from basics to advanced topics including web development, data science, and automation.', difficulty: 'beginner', lessons: '100+', href: 'python/' },
+            { icon: '☕', name: 'Java Development', desc: 'Master Java programming with object-oriented concepts, frameworks, and enterprise development.', difficulty: 'intermediate', lessons: '90+', href: 'java/' },
+            { icon: '⚡', name: 'C++ Programming', desc: 'Learn C++ for system programming, game development, and high-performance applications.', difficulty: 'advanced', lessons: '80+', href: 'cpp/' },
+            { icon: '🎯', name: 'C# Development', desc: 'Build modern applications with C# and .NET framework. Desktop, web, and mobile development.', difficulty: 'intermediate', lessons: '85+', href: 'csharp/' },
+            { icon: '⚙️', name: 'C Programming', desc: 'Master the foundation of programming with C language. System programming and embedded development.', difficulty: 'beginner', lessons: '70+', href: 'c/' },
+            { icon: '🌐', name: 'JavaScript', desc: 'Learn modern JavaScript, ES6+, DOM manipulation, and build interactive web applications.', difficulty: 'beginner', lessons: '95+', href: 'javascript/' },
+            { icon: '🚀', name: 'Go Programming', desc: 'Master Go language for backend development, microservices, and cloud-native applications.', difficulty: 'intermediate', lessons: '75+', href: 'go/' },
+            { icon: '🦀', name: 'Rust Programming', desc: 'Learn Rust for systems programming with memory safety and high performance.', difficulty: 'advanced', lessons: '65+', href: 'rust/' },
+            { icon: '📱', name: 'Android Development', desc: 'Create mobile apps with Android development using Java, Kotlin, and modern Android frameworks.', difficulty: 'intermediate', lessons: '110+', href: 'android/' }
         ];
 
         return tutorials.map((tutorial, index) => `
@@ -719,7 +721,23 @@ class TutorialApp {
 
     handleError(error) {
         console.error('Application error:', error);
-        this.showErrorNotification('Something went wrong. Please refresh the page.');
+        
+        // Categorize error types
+        let message = 'Something went wrong. Please refresh the page.';
+        if (error.name === 'TypeError') {
+            message = 'Network error. Please check your connection.';
+        } else if (error.name === 'SyntaxError') {
+            message = 'Page loading error. Please refresh to try again.';
+        }
+        
+        this.showErrorNotification(message);
+        
+        // Track error for debugging
+        this.trackEvent('error', {
+            message: error.message,
+            stack: error.stack,
+            timestamp: new Date().toISOString()
+        });
     }
 
     showErrorNotification(message) {

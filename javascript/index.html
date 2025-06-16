@@ -4,28 +4,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>JavaScript Programming Tutorial - Complete Professional Guide | Learn JavaScript Development</title>
-    <meta name="description" content="Master JavaScript programming with our comprehensive tutorial. From basics to advanced topics including ES6+, frameworks, and full-stack development.">
-    <meta name="keywords" content="javascript tutorial, learn javascript, js programming, javascript course, javascript basics, javascript advanced, web development, node.js">
-    <meta name="author" content="S23010843">
-    <meta name="robots" content="index, follow">
-    
-    <link rel="canonical" href="https://s23010843.github.io/tutorial/javascript">
-    
-    <!-- Open Graph -->
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://s23010843.github.io/tutorial/javascript">
-    <meta property="og:title" content="JavaScript Programming Tutorial - Complete Professional Guide">
-    <meta property="og:description" content="Master JavaScript programming with comprehensive tutorials covering basics to advanced full-stack development.">
-    <meta property="og:image" content="https://s23010843.github.io/tutorial/javascript/assets/js-og.png">
-
-    <!-- PWA -->
-    <link rel="manifest" href="../manifest.json">
-    <meta name="theme-color" content="#f7df1e">
-    <link rel="apple-touch-icon" href="../assets/icon-192.png">
-
-    <link rel="stylesheet" href="../styles.css">
+    <title>JavaScript Tutorial - Programming Tutorials Pro</title>
+    <meta name="description" content="Master JavaScript programming from basics to advanced concepts. Learn ES6+, DOM manipulation, and modern web development.">
     <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="../styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
 </head>
 <body>
     <!-- Navigation -->
@@ -41,13 +26,17 @@
                 <a href="../" class="nav-link">← Back to Hub</a>
                 <a href="#basics" class="nav-link">Basics</a>
                 <a href="#dom" class="nav-link">DOM</a>
+                <a href="#es6" class="nav-link">ES6+</a>
                 <a href="#async" class="nav-link">Async</a>
-                <a href="#frameworks" class="nav-link">Frameworks</a>
-                <a href="#advanced" class="nav-link">Advanced</a>
+                <a href="#projects" class="nav-link">Projects</a>
             </div>
             <div class="nav-actions">
                 <button class="theme-toggle" id="themeToggle">🌙</button>
-                <button class="install-btn" id="installBtn" style="display: none;">Install</button>
+                <button class="hamburger" id="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
             </div>
         </div>
     </nav>
@@ -55,9 +44,9 @@
     <!-- Hero Section -->
     <section class="hero javascript-hero">
         <div class="hero-content">
-            <div class="hero-icon">⚡</div>
+            <div class="hero-icon">🌐</div>
             <h1>Master JavaScript Programming</h1>
-            <p>Complete guide to JavaScript from basics to advanced full-stack development. Build dynamic web applications with modern ES6+ features and popular frameworks.</p>
+            <p>Learn modern JavaScript from fundamentals to advanced concepts. Build interactive web applications with ES6+, DOM manipulation, and asynchronous programming.</p>
             <div class="hero-buttons">
                 <a href="#basics" class="btn btn-primary">Start Learning</a>
                 <a href="#projects" class="btn btn-secondary">View Projects</a>
@@ -72,7 +61,7 @@
             <div class="lesson-grid">
                 <div class="lesson-card">
                     <h3>Introduction to JavaScript</h3>
-                    <p>Learn about JavaScript history, features, and setting up your development environment.</p>
+                    <p>Learn what JavaScript is, its role in web development, and how to get started.</p>
                     <div class="lesson-meta">
                         <span class="difficulty beginner">Beginner</span>
                         <span class="duration">15 min</span>
@@ -80,26 +69,26 @@
                 </div>
                 <div class="lesson-card">
                     <h3>Variables and Data Types</h3>
-                    <p>Understanding let, const, var, and JavaScript's dynamic typing system.</p>
-                    <div class="lesson-meta">
-                        <span class="difficulty beginner">Beginner</span>
-                        <span class="duration">20 min</span>
-                    </div>
-                </div>
-                <div class="lesson-card">
-                    <h3>Functions and Scope</h3>
-                    <p>Master function declarations, expressions, arrow functions, and scope.</p>
+                    <p>Understanding var, let, const, and JavaScript's dynamic typing system.</p>
                     <div class="lesson-meta">
                         <span class="difficulty beginner">Beginner</span>
                         <span class="duration">25 min</span>
                     </div>
                 </div>
                 <div class="lesson-card">
-                    <h3>Objects and Arrays</h3>
-                    <p>Learn about JavaScript objects, arrays, and modern destructuring syntax.</p>
+                    <h3>Functions and Scope</h3>
+                    <p>Master function declarations, expressions, arrow functions, and scope concepts.</p>
                     <div class="lesson-meta">
                         <span class="difficulty beginner">Beginner</span>
                         <span class="duration">30 min</span>
+                    </div>
+                </div>
+                <div class="lesson-card">
+                    <h3>Control Flow</h3>
+                    <p>Learn conditionals, loops, and control structures in JavaScript.</p>
+                    <div class="lesson-meta">
+                        <span class="difficulty beginner">Beginner</span>
+                        <span class="duration">20 min</span>
                     </div>
                 </div>
             </div>
@@ -109,27 +98,41 @@
             <h2>DOM Manipulation</h2>
             <div class="lesson-grid">
                 <div class="lesson-card">
-                    <h3>DOM Basics</h3>
-                    <p>Understanding the Document Object Model and selecting elements.</p>
+                    <h3>Understanding the DOM</h3>
+                    <p>Learn about the Document Object Model and how to interact with HTML elements.</p>
+                    <div class="lesson-meta">
+                        <span class="difficulty intermediate">Intermediate</span>
+                        <span class="duration">35 min</span>
+                    </div>
+                </div>
+                <div class="lesson-card">
+                    <h3>Event Handling</h3>
+                    <p>Master event listeners, event delegation, and interactive web pages.</p>
+                    <div class="lesson-meta">
+                        <span class="difficulty intermediate">Intermediate</span>
+                        <span class="duration">40 min</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="es6" class="content-section">
+            <h2>Modern JavaScript (ES6+)</h2>
+            <div class="lesson-grid">
+                <div class="lesson-card">
+                    <h3>Arrow Functions & Template Literals</h3>
+                    <p>Learn modern function syntax and string interpolation in JavaScript.</p>
                     <div class="lesson-meta">
                         <span class="difficulty intermediate">Intermediate</span>
                         <span class="duration">25 min</span>
                     </div>
                 </div>
                 <div class="lesson-card">
-                    <h3>Event Handling</h3>
-                    <p>Learn to handle user interactions with event listeners and delegation.</p>
+                    <h3>Destructuring & Spread Operator</h3>
+                    <p>Master array and object destructuring with the spread operator.</p>
                     <div class="lesson-meta">
                         <span class="difficulty intermediate">Intermediate</span>
                         <span class="duration">30 min</span>
-                    </div>
-                </div>
-                <div class="lesson-card">
-                    <h3>Dynamic Content</h3>
-                    <p>Create and modify HTML content dynamically with JavaScript.</p>
-                    <div class="lesson-meta">
-                        <span class="difficulty intermediate">Intermediate</span>
-                        <span class="duration">35 min</span>
                     </div>
                 </div>
             </div>
@@ -139,34 +142,53 @@
             <h2>Asynchronous JavaScript</h2>
             <div class="lesson-grid">
                 <div class="lesson-card">
-                    <h3>Promises</h3>
-                    <p>Master JavaScript promises for handling asynchronous operations.</p>
+                    <h3>Promises & Async/Await</h3>
+                    <p>Learn asynchronous programming with promises and modern async/await syntax.</p>
                     <div class="lesson-meta">
                         <span class="difficulty advanced">Advanced</span>
-                        <span class="duration">40 min</span>
+                        <span class="duration">45 min</span>
                     </div>
                 </div>
                 <div class="lesson-card">
-                    <h3>Async/Await</h3>
-                    <p>Learn modern async/await syntax for cleaner asynchronous code.</p>
+                    <h3>Fetch API & AJAX</h3>
+                    <p>Make HTTP requests and handle API responses in modern JavaScript.</p>
                     <div class="lesson-meta">
                         <span class="difficulty advanced">Advanced</span>
                         <span class="duration">35 min</span>
                     </div>
                 </div>
-                <div class="lesson-card">
-                    <h3>Fetch API</h3>
-                    <p>Make HTTP requests and handle responses with the modern Fetch API.</p>
+            </div>
+        </section>
+
+        <section id="projects" class="content-section">
+            <h2>JavaScript Projects</h2>
+            <div class="lesson-grid">
+                <div class="lesson-card project-card">
+                    <h3>To-Do List App</h3>
+                    <p>Build a dynamic to-do list with local storage and modern JavaScript.</p>
+                    <div class="lesson-meta">
+                        <span class="difficulty intermediate">Intermediate</span>
+                        <span class="duration">60 min</span>
+                    </div>
+                </div>
+                <div class="lesson-card project-card">
+                    <h3>Weather App</h3>
+                    <p>Create a weather application using APIs and asynchronous JavaScript.</p>
                     <div class="lesson-meta">
                         <span class="difficulty advanced">Advanced</span>
-                        <span class="duration">30 min</span>
+                        <span class="duration">90 min</span>
                     </div>
                 </div>
             </div>
         </section>
     </main>
 
-    <script src="../app.js"></script>
+    <footer class="tutorial-footer">
+        <div class="container">
+            <p>&copy; 2024 Programming Tutorials Pro. All rights reserved.</p>
+        </div>
+    </footer>
+
     <script src="app.js"></script>
 </body>
 </html>

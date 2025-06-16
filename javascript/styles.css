@@ -2,74 +2,109 @@
 /* JavaScript Tutorial Specific Styles */
 .javascript-hero {
     background: linear-gradient(135deg, #f7df1e 0%, #323330 100%);
-}
-
-.javascript-hero .hero-content {
     color: #323330;
 }
 
 .javascript-hero .hero-icon {
-    color: #323330;
-    filter: drop-shadow(0 4px 8px rgba(0,0,0,0.3));
+    font-size: 5rem;
+    margin-bottom: 1rem;
+    animation: rotate 20s linear infinite;
 }
 
-.tutorial-content {
-    padding: 4rem 0;
-    max-width: 1200px;
-    margin: 0 auto;
-    padding-left: 1.5rem;
-    padding-right: 1.5rem;
-}
-
-.content-section {
-    margin-bottom: 4rem;
-}
-
-.content-section h2 {
-    font-size: 2.5rem;
-    margin-bottom: 2rem;
-    text-align: center;
-    color: var(--text-primary);
-}
-
-.lesson-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 1.5rem;
+@keyframes rotate {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
 }
 
 .lesson-card {
-    background: var(--bg-primary);
-    border: 1px solid var(--border-color);
-    border-radius: var(--border-radius-lg);
-    padding: 1.5rem;
-    transition: var(--transition);
-    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s ease;
 }
 
-.lesson-card:hover {
-    transform: translateY(-4px);
-    box-shadow: var(--shadow-lg);
-    border-color: #f7df1e;
+.lesson-card.completed {
+    border-left: 4px solid #4caf50;
+    background: linear-gradient(135deg, rgba(76, 175, 80, 0.1) 0%, transparent 50%);
 }
 
-.lesson-card h3 {
-    margin-bottom: 1rem;
-    color: var(--text-primary);
-}
-
-.lesson-card p {
-    color: var(--text-secondary);
-    margin-bottom: 1rem;
-}
-
-.lesson-meta {
+.completion-badge {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: #4caf50;
+    color: white;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
     display: flex;
-    justify-content: space-between;
     align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    font-weight: bold;
 }
 
-.duration {
-    font-size: 0.875rem;
-    color: var(--text-muted);
+@keyframes bounceIn {
+    0% { transform: scale(0); opacity: 0; }
+    50% { transform: scale(1.2); opacity: 0.8; }
+    100% { transform: scale(1); opacity: 1; }
+}
+
+.project-card {
+    border: 2px solid #f7df1e;
+    background: linear-gradient(135deg, rgba(247, 223, 30, 0.1) 0%, transparent 50%);
+}
+
+.project-card::before {
+    content: '🚀';
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    font-size: 1.5rem;
+}
+
+.animate-in {
+    animation: slideInUp 0.6s ease forwards;
+}
+
+@keyframes slideInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Code Editor Styles */
+.code-editor {
+    background: #1e1e1e;
+    color: #d4d4d4;
+    font-family: 'Courier New', monospace;
+    padding: 1rem;
+    border-radius: 8px;
+    border: 1px solid #333;
+    resize: vertical;
+    min-height: 150px;
+}
+
+.code-editor.invalid {
+    border-color: #ff6b6b;
+    box-shadow: 0 0 0 2px rgba(255, 107, 107, 0.2);
+}
+
+/* Dark theme adjustments */
+[data-theme="dark"] .javascript-hero {
+    background: linear-gradient(135deg, #323330 0%, #f7df1e 100%);
+    color: #f7df1e;
+}
+
+[data-theme="dark"] .lesson-card {
+    background: rgba(255, 255, 255, 0.05);
+    border-color: rgba(255, 255, 255, 0.1);
+}
+
+[data-theme="dark"] .lesson-card.completed {
+    background: linear-gradient(135deg, rgba(76, 175, 80, 0.2) 0%, rgba(255, 255, 255, 0.05) 50%);
 }
