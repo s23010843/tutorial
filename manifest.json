@@ -1,0 +1,106 @@
+
+{
+  "name": "Programming Tutorials Pro",
+  "short_name": "TutorialsPro",
+  "description": "Complete programming tutorials for Git, Python, Java, C++, C#, C, Android with offline support",
+  "start_url": "/tutorial/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#1f2937",
+  "orientation": "portrait-primary",
+  "categories": ["education", "developer", "productivity", "utilities"],
+  "lang": "en",
+  "dir": "ltr",
+  "scope": "/tutorial/",
+  "icons": [
+    {
+      "src": "assets/icon-72.png",
+      "sizes": "72x72",
+      "type": "image/png",
+      "purpose": "maskable any"
+    },
+    {
+      "src": "assets/icon-96.png", 
+      "sizes": "96x96",
+      "type": "image/png",
+      "purpose": "maskable any"
+    },
+    {
+      "src": "assets/icon-128.png",
+      "sizes": "128x128", 
+      "type": "image/png",
+      "purpose": "maskable any"
+    },
+    {
+      "src": "assets/icon-144.png",
+      "sizes": "144x144",
+      "type": "image/png",
+      "purpose": "maskable any"
+    },
+    {
+      "src": "assets/icon-152.png",
+      "sizes": "152x152",
+      "type": "image/png", 
+      "purpose": "maskable any"
+    },
+    {
+      "src": "assets/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "maskable any"
+    },
+    {
+      "src": "assets/icon-384.png",
+      "sizes": "384x384",
+      "type": "image/png",
+      "purpose": "maskable any"
+    },
+    {
+      "src": "assets/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable any"
+    }
+  ],
+  "screenshots": [
+    {
+      "src": "assets/screenshot-mobile.png",
+      "sizes": "540x720",
+      "type": "image/png",
+      "form_factor": "narrow",
+      "label": "Mobile view of programming tutorials"
+    },
+    {
+      "src": "assets/screenshot-desktop.png", 
+      "sizes": "1280x720",
+      "type": "image/png",
+      "form_factor": "wide",
+      "label": "Desktop view of programming tutorials"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Git Tutorial",
+      "short_name": "Git",
+      "description": "Learn Git version control",
+      "url": "/tutorial/github/",
+      "icons": [{"src": "assets/git-icon.png", "sizes": "96x96"}]
+    },
+    {
+      "name": "Python Tutorial",
+      "short_name": "Python",
+      "description": "Learn Python programming",
+      "url": "/tutorial/python/",
+      "icons": [{"src": "assets/python-icon.png", "sizes": "96x96"}]
+    },
+    {
+      "name": "Java Tutorial",
+      "short_name": "Java",
+      "description": "Learn Java development",
+      "url": "/tutorial/java/",
+      "icons": [{"src": "assets/java-icon.png", "sizes": "96x96"}]
+    }
+  ],
+  "related_applications": [],
+  "prefer_related_applications": false
+}
