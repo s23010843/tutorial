@@ -1,7 +1,6 @@
+# Programming Tutorials Pro 🚀
 
-# Programming Tutorials Pro Hub
-
-A comprehensive, SEO-optimized Progressive Web App (PWA) for learning multiple programming languages from scratch. Features offline support, interactive tutorials, and mobile-friendly design.
+Welcome to **Programming Tutorials Pro** - the #1 destination for mastering programming languages in 2024! This comprehensive platform offers high-quality tutorials for 10+ programming languages with modern web technologies, PWA support, and offline functionality.
 
 ## 🌟 Features
 
@@ -18,49 +17,18 @@ A comprehensive, SEO-optimized Progressive Web App (PWA) for learning multiple p
 
 Visit: [s23010843.github.io/tutorial](https://s23010843.github.io/tutorial)
 
-## 🚀 Available Tutorials
+## 📚 Available Tutorials
 
-### 🔧 Git & GitHub
-- Version control fundamentals
-- GitHub collaboration workflows
-- Interactive terminal simulator
-- 50+ comprehensive lessons
-
-### 🐍 Python Programming
-- From basics to advanced concepts
-- Web development with Django/Flask
-- Data science and machine learning
-- 80+ hands-on lessons
-
-### ☕ Java Development
-- Object-oriented programming
-- Enterprise application development
-- Spring framework tutorials
-- 70+ practical examples
-
-### ⚡ C++ Programming
-- System programming concepts
-- Game development fundamentals
-- Performance optimization
-- 60+ advanced topics
-
-### 🎯 C# Development
-- .NET framework mastery
-- Desktop and web applications
-- Modern C# features
-- 65+ professional lessons
-
-### ⚙️ C Programming
-- Foundation programming concepts
-- System-level programming
-- Embedded development
-- 45+ essential topics
-
-### 📱 Android Development
-- Native app development
-- Java and Kotlin tutorials
-- Modern Android frameworks
-- 90+ mobile development lessons
+- **🔧 Git & GitHub** - Master version control and collaboration (60+ lessons)
+- **🐍 Python Programming** - From basics to advanced development (100+ lessons)
+- **☕ Java Development** - Object-oriented programming mastery (90+ lessons)
+- **⚡ C++ Programming** - High-performance application development (80+ lessons)
+- **🎯 C# Development** - Modern .NET applications (85+ lessons)
+- **⚙️ C Programming** - Foundation of programming (70+ lessons)
+- **🌐 JavaScript** - Modern web development and ES6+ (95+ lessons)
+- **🚀 Go Programming** - Backend and cloud-native development (75+ lessons)
+- **🦀 Rust Programming** - Systems programming with memory safety (65+ lessons)
+- **📱 Android Development** - Mobile app creation (110+ lessons)
 
 ## 🛠️ Technical Stack
 

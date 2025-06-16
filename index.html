@@ -1,2 +1,366 @@
-The code has been updated with new tutorials for JavaScript, Go, and Rust, while retaining the existing structure and formatting.
-```
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Master programming with comprehensive tutorials for Python, Java, C++, C#, JavaScript, Go, Rust, Android, and Git. Interactive learning with offline support.">
+    <meta name="keywords" content="programming tutorials, python, java, cpp, csharp, javascript, go, rust, android, git, coding, software development">
+    <meta name="author" content="Programming Tutorials Pro">
+    <meta name="robots" content="index, follow">
+    <meta name="theme-color" content="#667eea">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://s23010843.github.io/tutorial/">
+    <meta property="og:title" content="Programming Tutorials Pro - #1 Free Learning Platform">
+    <meta property="og:description" content="Master programming with comprehensive tutorials for Python, Java, C++, C#, JavaScript, Go, Rust, Android, and Git.">
+    <meta property="og:image" content="https://s23010843.github.io/tutorial/assets/logo.svg">
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://s23010843.github.io/tutorial/">
+    <meta property="twitter:title" content="Programming Tutorials Pro - #1 Free Learning Platform">
+    <meta property="twitter:description" content="Master programming with comprehensive tutorials for Python, Java, C++, C#, JavaScript, Go, Rust, Android, and Git.">
+    <meta property="twitter:image" content="https://s23010843.github.io/tutorial/assets/logo.svg">
+    
+    <!-- Favicons -->
+    <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+    <link rel="icon" type="image/x-icon" href="assets/favicon.ico">
+    <link rel="apple-touch-icon" href="assets/icon-192.png">
+    
+    <!-- PWA Manifest -->
+    <link rel="manifest" href="manifest.json">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="styles.css">
+    
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "EducationalOrganization",
+        "name": "Programming Tutorials Pro",
+        "url": "https://s23010843.github.io/tutorial/",
+        "description": "Free comprehensive programming tutorials for multiple languages",
+        "educationalLevel": "Beginner to Advanced",
+        "teaches": ["Python", "Java", "C++", "C#", "JavaScript", "Go", "Rust", "Android", "Git"],
+        "audience": {
+            "@type": "Audience",
+            "audienceType": "Students, Developers, Programmers"
+        }
+    }
+    </script>
+    
+    <title>Programming Tutorials Pro - #1 Free Learning Platform 2024</title>
+</head>
+<body>
+    <!-- Loading Screen -->
+    <div class="loading-screen" id="loadingScreen">
+        <div class="loading-spinner"></div>
+        <p>Loading Programming Tutorials Pro...</p>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <a href="#home" style="display: flex; align-items: center; gap: 0.75rem; text-decoration: none; color: inherit;">
+                    <img src="assets/logo.svg" alt="Programming Tutorials Pro Logo" width="40" height="40">
+                    <span>Programming Tutorials Pro</span>
+                </a>
+            </div>
+            <div class="nav-menu" id="navMenu">
+                <a href="#home" class="nav-link active">Home</a>
+                <a href="github/" class="nav-link">Git & GitHub</a>
+                <a href="python/" class="nav-link">Python</a>
+                <a href="java/" class="nav-link">Java</a>
+                <a href="cpp/" class="nav-link">C++</a>
+                <a href="csharp/" class="nav-link">C#</a>
+                <a href="c/" class="nav-link">C</a>
+                <a href="javascript/" class="nav-link">JavaScript</a>
+                <a href="go/" class="nav-link">Go</a>
+                <a href="rust/" class="nav-link">Rust</a>
+                <a href="android/" class="nav-link">Android</a>
+            </div>
+            <div class="nav-actions">
+                <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+                    <span class="theme-icon">🌙</span>
+                </button>
+                <button class="install-btn" id="installBtn" style="display: none;" aria-label="Install PWA">
+                    Install App
+                </button>
+                <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main>
+        <!-- Hero Section -->
+        <section class="hero enhanced-hero" id="home">
+            <div class="hero-background"></div>
+            <div class="container">
+                <div class="hero-content">
+                    <h1 class="hero-title animate-fade-in">Master Programming with Professional Tutorials</h1>
+                    <p class="hero-subtitle animate-slide-up">Complete courses for 10+ programming languages including Python, Java, C++, JavaScript, and more. Interactive examples, offline support, and industry best practices for <span class="current-year">2024</span>.</p>
+                    <div class="hero-buttons animate-slide-up-delayed">
+                        <a href="github/" class="btn btn-primary pulse-effect">Start with Git & GitHub</a>
+                        <a href="python/" class="btn btn-secondary hover-lift">Learn Python</a>
+                    </div>
+                    <div class="hero-stats animate-fade-in-delayed">
+                        <div class="stat">
+                            <span class="stat-number counter" data-target="10">0</span>
+                            <span class="stat-label">Languages</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-number counter" data-target="800">0</span>
+                            <span class="stat-label">Lessons</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-number">100%</span>
+                            <span class="stat-label">Free</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-number">Offline</span>
+                            <span class="stat-label">Ready</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Tutorials Section -->
+        <section class="tutorials enhanced-tutorials" id="tutorials">
+            <div class="container">
+                <h2 class="section-title animate-on-scroll">Choose Your Programming Journey</h2>
+                <div class="tutorial-grid enhanced-grid">
+                    <div class="tutorial-card enhanced-card featured animate-on-scroll" data-href="github/">
+                        <div class="tutorial-icon animate-float">🔧</div>
+                        <h3>Git & GitHub</h3>
+                        <p>Master version control and collaboration with our comprehensive Git and GitHub tutorial. Essential for every developer.</p>
+                        <div class="tutorial-meta">
+                            <span class="difficulty beginner">Beginner</span>
+                            <span class="lessons">60+ Lessons</span>
+                        </div>
+                        <a href="github/" class="tutorial-link">Start Learning</a>
+                    </div>
+
+                    <div class="tutorial-card enhanced-card animate-on-scroll" data-href="python/">
+                        <div class="tutorial-icon animate-float">🐍</div>
+                        <h3>Python Programming</h3>
+                        <p>Learn Python from basics to advanced topics including web development, data science, and automation.</p>
+                        <div class="tutorial-meta">
+                            <span class="difficulty beginner">Beginner</span>
+                            <span class="lessons">100+ Lessons</span>
+                        </div>
+                        <a href="python/" class="tutorial-link">Start Learning</a>
+                    </div>
+
+                    <div class="tutorial-card enhanced-card animate-on-scroll" data-href="java/">
+                        <div class="tutorial-icon animate-float">☕</div>
+                        <h3>Java Development</h3>
+                        <p>Master Java programming with object-oriented concepts, frameworks, and enterprise development.</p>
+                        <div class="tutorial-meta">
+                            <span class="difficulty intermediate">Intermediate</span>
+                            <span class="lessons">90+ Lessons</span>
+                        </div>
+                        <a href="java/" class="tutorial-link">Start Learning</a>
+                    </div>
+
+                    <div class="tutorial-card enhanced-card animate-on-scroll" data-href="cpp/">
+                        <div class="tutorial-icon animate-float">⚡</div>
+                        <h3>C++ Programming</h3>
+                        <p>Learn C++ for system programming, game development, and high-performance applications.</p>
+                        <div class="tutorial-meta">
+                            <span class="difficulty advanced">Advanced</span>
+                            <span class="lessons">80+ Lessons</span>
+                        </div>
+                        <a href="cpp/" class="tutorial-link">Start Learning</a>
+                    </div>
+
+                    <div class="tutorial-card enhanced-card animate-on-scroll" data-href="csharp/">
+                        <div class="tutorial-icon animate-float">🎯</div>
+                        <h3>C# Development</h3>
+                        <p>Build modern applications with C# and .NET framework. Desktop, web, and mobile development.</p>
+                        <div class="tutorial-meta">
+                            <span class="difficulty intermediate">Intermediate</span>
+                            <span class="lessons">85+ Lessons</span>
+                        </div>
+                        <a href="csharp/" class="tutorial-link">Start Learning</a>
+                    </div>
+
+                    <div class="tutorial-card enhanced-card animate-on-scroll" data-href="c/">
+                        <div class="tutorial-icon animate-float">⚙️</div>
+                        <h3>C Programming</h3>
+                        <p>Master the foundation of programming with C language. System programming and embedded development.</p>
+                        <div class="tutorial-meta">
+                            <span class="difficulty beginner">Beginner</span>
+                            <span class="lessons">70+ Lessons</span>
+                        </div>
+                        <a href="c/" class="tutorial-link">Start Learning</a>
+                    </div>
+
+                    <div class="tutorial-card enhanced-card animate-on-scroll" data-href="javascript/">
+                        <div class="tutorial-icon animate-float">🌐</div>
+                        <h3>JavaScript</h3>
+                        <p>Learn modern JavaScript, ES6+, DOM manipulation, and build interactive web applications.</p>
+                        <div class="tutorial-meta">
+                            <span class="difficulty beginner">Beginner</span>
+                            <span class="lessons">95+ Lessons</span>
+                        </div>
+                        <a href="javascript/" class="tutorial-link">Start Learning</a>
+                    </div>
+
+                    <div class="tutorial-card enhanced-card animate-on-scroll" data-href="go/">
+                        <div class="tutorial-icon animate-float">🚀</div>
+                        <h3>Go Programming</h3>
+                        <p>Master Go language for backend development, microservices, and cloud-native applications.</p>
+                        <div class="tutorial-meta">
+                            <span class="difficulty intermediate">Intermediate</span>
+                            <span class="lessons">75+ Lessons</span>
+                        </div>
+                        <a href="go/" class="tutorial-link">Start Learning</a>
+                    </div>
+
+                    <div class="tutorial-card enhanced-card animate-on-scroll" data-href="rust/">
+                        <div class="tutorial-icon animate-float">🦀</div>
+                        <h3>Rust Programming</h3>
+                        <p>Learn Rust for systems programming with memory safety and high performance.</p>
+                        <div class="tutorial-meta">
+                            <span class="difficulty advanced">Advanced</span>
+                            <span class="lessons">65+ Lessons</span>
+                        </div>
+                        <a href="rust/" class="tutorial-link">Start Learning</a>
+                    </div>
+
+                    <div class="tutorial-card enhanced-card animate-on-scroll" data-href="android/">
+                        <div class="tutorial-icon animate-float">📱</div>
+                        <h3>Android Development</h3>
+                        <p>Create mobile apps with Android development using Java, Kotlin, and modern Android frameworks.</p>
+                        <div class="tutorial-meta">
+                            <span class="difficulty intermediate">Intermediate</span>
+                            <span class="lessons">110+ Lessons</span>
+                        </div>
+                        <a href="android/" class="tutorial-link">Start Learning</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Features Section -->
+        <section class="features enhanced-features" id="features">
+            <div class="container">
+                <h2 class="section-title animate-on-scroll">Why Choose Our Tutorials?</h2>
+                <div class="features-grid enhanced-features-grid">
+                    <div class="feature-card enhanced-feature animate-on-scroll">
+                        <div class="feature-icon pulse-icon">🏆</div>
+                        <h3>Professional Quality</h3>
+                        <p>Industry-standard practices with real-world examples from experienced developers</p>
+                    </div>
+
+                    <div class="feature-card enhanced-feature animate-on-scroll">
+                        <div class="feature-icon pulse-icon">📱</div>
+                        <h3>Mobile Optimized</h3>
+                        <p>Perfect experience on all devices with responsive design and PWA technology</p>
+                    </div>
+
+                    <div class="feature-card enhanced-feature animate-on-scroll">
+                        <div class="feature-icon pulse-icon">⚡</div>
+                        <h3>Interactive Learning</h3>
+                        <p>Practice with built-in code editors and hands-on exercises</p>
+                    </div>
+
+                    <div class="feature-card enhanced-feature animate-on-scroll">
+                        <div class="feature-icon pulse-icon">🔄</div>
+                        <h3>Works Offline</h3>
+                        <p>Continue learning anywhere with full offline support</p>
+                    </div>
+
+                    <div class="feature-card enhanced-feature animate-on-scroll">
+                        <div class="feature-icon pulse-icon">🎯</div>
+                        <h3>SEO Optimized</h3>
+                        <p>Structured content for easy discovery and learning progress tracking</p>
+                    </div>
+
+                    <div class="feature-card enhanced-feature animate-on-scroll">
+                        <div class="feature-icon pulse-icon">🔒</div>
+                        <h3>Privacy Focused</h3>
+                        <p>No tracking, no cookies, just pure learning experience</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Programming Tutorials Pro</h3>
+                    <p>The #1 destination for free, comprehensive programming tutorials. Master multiple languages with our interactive, offline-ready platform.</p>
+                    <p>&copy; <span class="current-year">2024</span> Programming Tutorials Pro. All rights reserved.</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Popular Tutorials</h4>
+                    <ul>
+                        <li><a href="github/">Git & GitHub</a></li>
+                        <li><a href="python/">Python Programming</a></li>
+                        <li><a href="java/">Java Development</a></li>
+                        <li><a href="javascript/">JavaScript</a></li>
+                        <li><a href="cpp/">C++ Programming</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Advanced Languages</h4>
+                    <ul>
+                        <li><a href="csharp/">C# Development</a></li>
+                        <li><a href="c/">C Programming</a></li>
+                        <li><a href="go/">Go Programming</a></li>
+                        <li><a href="rust/">Rust Programming</a></li>
+                        <li><a href="android/">Android Development</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Resources</h4>
+                    <ul>
+                        <li><a href="README.md">About</a></li>
+                        <li><a href="SECURITY.md">Security Policy</a></li>
+                        <li><a href="#" class="disabled">Blog (Coming Soon)</a></li>
+                        <li><a href="#" class="disabled">Community (Coming Soon)</a></li>
+                        <li><a href="#" class="disabled">Certification (Coming Soon)</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>Built with ❤️ for developers worldwide. Learn to code, change the world.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Notifications -->
+    <div class="offline-status" id="offlineStatus">
+        <span>📶 You're offline. Tutorial content is still available!</span>
+    </div>
+
+    <div class="cookie-notice" id="cookieNotice">
+        <div class="cookie-content">
+            <p>This site uses only essential local storage for your preferences. No tracking, no external cookies. 🍪</p>
+            <button class="btn btn-primary" id="acceptCookies">Got it!</button>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="app.js"></script>
+</body>
+</html>
