@@ -20,7 +20,7 @@ Visit: [s23010843.github.io/tutorial](https://s23010843.github.io/tutorial)
 ## 📚 Available Tutorials
 
 - **🔧 Git & GitHub** - Master version control and collaboration (60+ lessons)
-- **🐍 Python Programming** - From basics to advanced development (100+ lessons)
+- ** Python Programming** - From basics to advanced development (100+ lessons)
 - **☕ Java Development** - Object-oriented programming mastery (90+ lessons)
 - **⚡ C++ Programming** - High-performance application development (80+ lessons)
 - **🎯 C# Development** - Modern .NET applications (85+ lessons)
@@ -135,7 +135,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 - Website: [s23010843.github.io](https://s23010843.github.io)
 - Tutorial Hub: [s23010843.github.io/tutorial](https://s23010843.github.io/tutorial)
 
-## 🙏 Acknowledgments
+##  Acknowledgments
 
 - Programming communities for excellent documentation
 - PWA best practices from Google Developers
